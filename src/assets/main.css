@@ -1,0 +1,15 @@
+body {
+    padding-top: 20px
+}
+
+.jumbotron.jumbo-light {
+    padding: 2rem;
+}
+
+.jumbotron.jumbo-light p {
+    margin-bottom: 0;
+}
+
+.btn-active {
+    border: 2px solid black;
+}
