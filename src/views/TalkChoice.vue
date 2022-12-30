@@ -12,8 +12,8 @@
 
 
   <div class="cards">
-    <div class="row" v-for="i in Math.ceil(files.length / 4)">
-      <div class="col-sm-3" v-for="(f, idx) in files.slice((i - 1) * 4, i * 4)">
+    <div class="row" v-for="i in Math.ceil(files.length / 4)" :key="i">
+      <div class="col-sm-3" v-for="(f, idx) in files.slice((i - 1) * 4, i * 4)" :key="idx">
         <div class="card">
           <div v-if="f.talk">
             <div class="logo">
@@ -25,7 +25,7 @@
               <p class="card-text">{{f.talk.talk}}</p>
 
               <ul class="list-unstyled">
-                <li v-for="speaker in f.talk.speakers">{{speaker.name}}</li>
+                <li v-for="speaker in f.talk.speakers" :key="speaker.name">{{speaker.name}}</li>
               </ul>
 
               <button @click="select(f)" class="btn btn-primary" :disabled="loading">
@@ -78,8 +78,7 @@ export default {
 
     select(file) {
       this.loading = true
-      axios.patch('/files/talk', { path: file.path, name: file.name })
-          .then(() => this.$router.push('/record'))
+      axios.put('/state/talk', { path: file.path, name: file.name })
           .finally(() => this.loading = false)
     },
 
