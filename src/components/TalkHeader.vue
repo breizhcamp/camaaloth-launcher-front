@@ -1,7 +1,7 @@
 <template>
   <div class="row" v-if="talk">
     <div class="col-sm-1">
-      <button @click="$emit('back')" class="btn btn-info"><i class="fas fa-arrow-left"></i></button>
+      <button @click="$emit('back')" class="btn btn-info" :disabled="disabled"><i class="fas fa-arrow-left"></i></button>
     </div>
     <div class="col-sm-10 text-center">
       <h2>{{talk.talk}}</h2>
@@ -30,7 +30,7 @@ import dayjs from 'dayjs'
 
 export default {
   name: 'TalkHeader',
-  props: ['talk', 'back'],
+  props: ['talk', 'back', 'disabled'],
   emits: ['back'],
 
   computed: {
